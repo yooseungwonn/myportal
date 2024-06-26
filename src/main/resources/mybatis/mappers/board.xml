@@ -7,8 +7,8 @@
 	<selectKey keyProperty="no" resultType="long" order="BEFORE"> 
 	SELECT seq_board_pk.nextval FROM dual
 	</selectKey>
-	INSERT INTO board (no, content, hit, reg_date, user_no)
-	VALUES(#{no}, #{content}, 0, sysdate, #{userNo})
+	INSERT INTO board (no, title, content, hit, reg_date, user_no)
+	VALUES(#{no},#{title}, #{content}, 0, sysdate, #{userNo})
 	</insert>
 	
 	<!-- 목록 -->
@@ -17,6 +17,7 @@
 	       b.user_no as userNo, u.name as userName
 	FROM board b, users u
 	WHERE b.user_no = u.no
+	ORDER BY b.reg_date DESC
 	</select>
 	
 	<!-- 게시물 읽기 -->
@@ -41,4 +42,10 @@
 	SET title=#{title}, content=#{content}
 	WHERE no=#{no}
 	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="deleteByUserVo" parameterType="map">
+	DELETE FROM board	
+	WHERE no = #{no} AND user_no = #{userNo}
+	</delete>
 </mapper>

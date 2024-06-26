@@ -21,20 +21,27 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVo getContent(Long no) {
+		boardDao.increaseHitCount(no);
 		BoardVo boardVo = boardDao.getContent(no);
 		return boardVo;
 	}
 
 	@Override
 	public boolean write(BoardVo boardvo) {
-		// TODO Auto-generated method stub
-		return false;
+		int insertedCount = boardDao.insert(boardvo);
+		return insertedCount == 1;
 	}
 
 	@Override
 	public boolean update(BoardVo boardvo) {
-		// TODO Auto-generated method stub
-		return false;
+		int updatedCount = boardDao.update(boardvo);
+		return updatedCount == 1;
+	}
+
+	@Override
+	public boolean delete(Long no, Long userNo) {
+		int deletedCount = boardDao.delete(no, userNo);
+		return deletedCount == 1;
 	}
 	
 }
