@@ -4,9 +4,9 @@
 <mapper namespace="guestbook">
 	<!-- 목록 -->
 	<select id="selectAll" resultType="GuestbookVo">
-	SELECT no, name, password, content, regdate as regDate
+	SELECT no, name, password, content, reg_date as regDate
 	FROM guestbook
-	ORDER BY regdate DESC
+	ORDER BY reg_date DESC
 	</select>
 	
 	<!-- 게시물 입력 (INSERT) -->
