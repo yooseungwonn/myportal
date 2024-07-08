@@ -5,11 +5,25 @@
 <head>
 	<title>My Homepage</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<link href="/myportal/css/board.css" rel="stylesheet" type="text/css">
+	<link type="text/css" rel="stylesheet"
+	href='<c:url value="/css/board.css" />' />
 </head>
 <body>
-	
-	<table border="1" width="640">
+	 <div id="container">
+  
+    <!-- header include -->
+    <c:import url="/WEB-INF/views/includes/header.jsp">
+    	<c:param name="param1" value="value1" />
+    	<c:param name="param2" value="value2" />
+    </c:import>
+
+	<!-- navigation include -->
+	<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+    
+	<div id="wrapper">
+      <div id="content">
+			<!-- Content 영역 -->
+	<table border="1" width="480">
 		<tr>
 			<td colspan="2"><h3>게시판</h3></td>
 		</tr>
@@ -35,6 +49,12 @@
 			</td>
 		</tr>
 	</table>
-
+	</div>
+	</div>
+	
+	<!-- footer include -->
+	<%@ include file="/WEB-INF/views/includes/footer.jsp" %>
+	
+	</div>
 </body>
 </html>

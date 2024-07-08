@@ -5,9 +5,26 @@
 <head>
 	<title>My Homepage</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link type="text/css" rel="stylesheet"
+	href='<c:url value="/css/board.css" />' />
 </head>
 <body>
-	<table border="1" width="640">
+<div id="container">
+
+		<!-- header include -->
+		<c:import url="/WEB-INF/views/includes/header.jsp">
+			<c:param name="param1" value="value1" />
+			<c:param name="param2" value="value2" />
+		</c:import>
+
+		<!-- navigation include -->
+		<c:import url="/WEB-INF/views/includes/navigation.jsp" />
+
+		<div id="wrapper">
+			<div id="content">
+
+				<!-- Content -->
+	<table border="1" width="480">
 		<tr>
 			<td colspan="6"><h3>게시판</h3></td>
 		</tr>
@@ -42,5 +59,10 @@
 			<td colspan="6"><a href="<c:url value="/board/write"/> ">글쓰기</a></td>
 		</tr>
 	</table>
+	</div>
+	</div>
+	<!-- footer include -->
+		<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
+	</div>
 </body>
 </html>
